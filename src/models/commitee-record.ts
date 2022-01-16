@@ -1,9 +1,9 @@
 interface CommiteeRecord {
-  name: string,
-  role: string,
-  start_date: Date,
-  end_date: Date,
-  active: boolean
+    name: string
+    role: string
+    start_date: Date
+    end_date: Date
+    active: boolean
 }
 
-export default CommiteeRecord;
+export default CommiteeRecord
