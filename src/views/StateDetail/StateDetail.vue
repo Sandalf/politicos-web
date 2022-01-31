@@ -6,6 +6,7 @@ import PoliticianType from '../../models/politician'
 import PoliticianPreview from '../../components/PoliticianPreview.vue'
 
 const federalDeputies = ref<PoliticianType[]>([])
+const senators = ref<PoliticianType[]>([])
 const route = useRoute()
 
 const fetchFederalDeputies = async () => {
@@ -14,8 +15,15 @@ const fetchFederalDeputies = async () => {
     ).then((r: any) => r.data)
 }
 
+const fetchSenators = async () => {
+    senators.value = await PoliticiansApi.getStateSenators(
+        route.params.state
+    ).then((r: any) => r.data)
+}
+
 onMounted(() => {
     fetchFederalDeputies()
+    fetchSenators()
 })
 </script>
 
@@ -24,6 +32,19 @@ onMounted(() => {
         <h2 class="text-left text-gray-900 text-3xl font-bold px-4 mb-4">
             Senadores
         </h2>
+        <div class="flex flex-wrap">
+            <router-link
+                v-for="senator in senators"
+                :key="senator.id"
+                :to="{
+                    name: 'politicianDetail',
+                    params: { id: senator.id },
+                }"
+                class="w-full md:w-4/12 px-4 text-center mb-8"
+            >
+                <PoliticianPreview :politician="senator" />
+            </router-link>
+        </div>
         <h2 class="text-left text-gray-900 text-3xl font-bold px-4 mb-4">
             Diputados Federales
         </h2>

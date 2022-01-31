@@ -2,6 +2,9 @@ import http from './http'
 import { PoliticianCategory } from '../models/politician'
 
 export default {
+    findById(id: string | number) {
+        return http.get('politicians/' + id)
+    },
     getAll() {
         return http.get('politicians')
     },
@@ -13,7 +16,12 @@ export default {
             },
         })
     },
-    findById(id: string | number) {
-        return http.get('politicians/' + id)
+    getStateSenators(stateCode: string) {
+        return http.get('politicians', {
+            params: {
+                state_code: stateCode,
+                category: PoliticianCategory.Senator,
+            },
+        })
     },
 }

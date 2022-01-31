@@ -59,7 +59,7 @@ onMounted(() => {
                 >
                     Diputado Federal
                 </div>
-                <div v-else>Senador</div>
+                <div v-else class="text-left">Senador</div>
                 <hr class="my-4" />
                 <div class="text-left">
                     <div class="flex items-center">
