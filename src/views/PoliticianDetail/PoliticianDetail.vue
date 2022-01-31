@@ -22,7 +22,6 @@ const loading = ref(true)
 const socialLinkType = SocialLinkType;
 const fetchData = async () => {
     const route = useRoute()
-    console.log('route', route.params)
     politician.value = await PoliticiansApi.findById(<string>route.params.id).then(
         (r: any) => r.data
     )

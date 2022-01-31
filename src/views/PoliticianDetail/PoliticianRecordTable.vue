@@ -8,6 +8,10 @@ const props = defineProps({
         required: true,
     },
 })
+
+const getYear = (date: string) => {
+    return new Date(date).getFullYear()
+}
 </script>
 
 <template>
@@ -55,12 +59,12 @@ const props = defineProps({
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap">
                                     <div class="text-sm text-gray-900">
-                                        {{ record.start_date }}
+                                        {{ getYear(record.start_date) }}
                                     </div>
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap">
                                     <div class="text-sm text-gray-900">
-                                        {{ record.end_date }}
+                                        {{ getYear(record.end_date) }}
                                     </div>
                                 </td>
                             </tr>
