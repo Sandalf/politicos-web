@@ -14,9 +14,10 @@ const props = defineProps({
 const politicianRecords = ref<PoliticianRecordModel[]>()
 const loading = ref(true)
 const fetchData = async () => {
-    politicianRecords.value = await PoliticianRecordsApi.getCommitteeHistory(
-        props.politicianId
-    ).then((r: any) => r.data)
+    politicianRecords.value =
+        await PoliticianRecordsApi.getAdministrativeHistory(
+            props.politicianId
+        ).then((r: any) => r.data)
     loading.value = false
 }
 onMounted(() => {
@@ -26,7 +27,9 @@ onMounted(() => {
 
 <template>
     <div>
-        <h2 class="text-left font-bold text-xl mb-3">Comisiones</h2>
+        <h2 class="text-left font-bold text-xl mb-3">
+            Trayectoria Administrativa
+        </h2>
         <div v-if="!loading">
             <PoliticianRecordTable :politician-records="politicianRecords" />
         </div>

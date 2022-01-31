@@ -10,6 +10,7 @@ import PoliticianModel, {
 import { SocialLinkType } from '../../models/social-link';
 import { MapPinIcon, TriangleSquareCircleIcon, MailIcon, PhoneIcon, LinkIcon, BrandTwitterIcon, BrandFacebookIcon, BrandInstagramIcon, BrandYoutubeIcon } from 'vue-tabler-icons'
 import PoliticianDetailCommitteeHistory from "./PoliticianDetailCommitteeHistory.vue"
+import PoliticianDetailAdministrativeHistory from "././PoliticianDetailAdministrativeHistory.vue"
 
 const politician = ref<PoliticianModel>()
 const loading = ref(true)
@@ -103,7 +104,8 @@ onMounted(() => {
                     </div>
                 </div>
             </div>
-            <PoliticianDetailCommitteeHistory class="mt-4" :politician-id="politician?.id" />
+            <PoliticianDetailCommitteeHistory class="mt-6" :politician-id="politician?.id" />
+            <PoliticianDetailAdministrativeHistory class="mt-6" :politician-id="politician?.id" />
         </div>
     </div>
 </template>

@@ -8,4 +8,12 @@ export default {
             },
         })
     },
+
+    getAdministrativeHistory(politicianId: string | number) {
+        return http.get('politician_records/administrative_history', {
+            params: {
+                politician_id: politicianId,
+            },
+        })
+    },
 }
