@@ -64,10 +64,14 @@ onMounted(() => {
                 <div class="text-left">
                     <div class="flex items-center">
                         <MapPinIcon class="mr-3" />
-                        <span>
-                            {{ politician?.city }}, {{ politician?.state.name }},
-                            Distrito
-                            {{ politician?.district }}
+                        <span v-if="politician?.city" class="mr-2">
+                            {{ politician?.city }}
+                        </span>
+                        <span v-if="politician?.state.name" class="mr-2">
+                            {{ politician?.state.name }}
+                        </span>
+                        <span v-if="politician?.district">
+                            Distrito {{ politician?.district }}
                         </span>
                     </div>
                     <div v-if="politician?.party" class="flex items-center mt-4">
