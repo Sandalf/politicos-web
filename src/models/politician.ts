@@ -32,7 +32,7 @@ export const PartyName = {
 }
 
 interface Politician {
-    id: number
+    id: string | number
     name: string
     email: string
     legislature: string

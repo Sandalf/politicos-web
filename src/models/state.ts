@@ -1,5 +1,5 @@
 interface State {
-    id: number
+    id: string | number
     name: string
     code: string
 }

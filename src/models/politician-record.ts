@@ -9,6 +9,7 @@ enum PoliticianRecordType {
 }
 
 interface PoliticianRecord {
+    id: string | number
     start_date: string
     end_date: string
     description: string
