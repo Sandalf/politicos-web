@@ -102,7 +102,10 @@ onMounted(() => {
                         <BrandTwitterIcon v-else-if="link.type ===  socialLinkType.Twitter" class="mr-3"/>
                         <BrandYoutubeIcon v-else-if="link.type ===  socialLinkType.YouTube" class="mr-3"/>
                         <BrandInstagramIcon  v-else-if="link.type ===  socialLinkType.Instagram" class="mr-3"/>
-                        <a :href="link.url" target="_blank">
+                        <a v-if="link.type ===  socialLinkType.Website" :href="link.url" target="_blank">
+                            {{ link.url }}
+                        </a>
+                        <a v-else :href="link.url" target="_blank">
                             {{ partSocialLinkUrl(link.url) }}
                         </a>
                     </div>
