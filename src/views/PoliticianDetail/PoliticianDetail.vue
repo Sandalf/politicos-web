@@ -45,6 +45,11 @@ onMounted(() => {
     <div class="container mx-auto pt-8 px-4 pb-4">
         <div v-if="!loading">
             <div class="border p-6">
+                <img
+                    :src="politician?.photo_url"
+                    :alt="politician?.name"
+                    class="shadow-lg rounded-full object-cover h-24 w-24 md:h-40 md:w-40 border mb-3"
+                />
                 <h1 class="text-left text-gray-900 text-3xl font-bold px-0">
                     {{ politician?.name }}
                 </h1>
@@ -55,15 +60,6 @@ onMounted(() => {
                     Diputado Federal
                 </div>
                 <div v-else>Senador</div>
-                <div class="flex flex-wrap justify-center">
-                    <div class="w-6/12 sm:w-4/12 px-4">
-                        <img
-                            :src="politician?.photo_url"
-                            :alt="politician?.name"
-                            class="shadow rounded-full max-w-full h-auto align-middle border-none"
-                        />
-                    </div>
-                </div>
                 <hr class="my-4" />
                 <div class="text-left">
                     <div class="flex items-center">
