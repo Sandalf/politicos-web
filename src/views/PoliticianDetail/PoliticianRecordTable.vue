@@ -11,7 +11,7 @@ const props = defineProps({
 </script>
 
 <template>
-    <div class="flex flex-col">
+    <div v-if="politicianRecords.length" class="flex flex-col">
         <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
             <div
                 class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8"
@@ -70,4 +70,5 @@ const props = defineProps({
             </div>
         </div>
     </div>
+    <div v-else class="border py-10 px-4">No hay registros para mostrar</div>
 </template>
