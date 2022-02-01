@@ -8,5 +8,5 @@ import TheFooter from '../components/TheFooter.vue'
     <main>
         <router-view></router-view>
     </main>
-    <TheFooter class="mt-20" />
+    <TheFooter />
 </template>

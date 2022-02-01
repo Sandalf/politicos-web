@@ -16,11 +16,13 @@ import PoliticianDetailPoliticalHistory from "./PoliticianDetailPoliticalHistory
 import PoliticianDetailAcademicHistory from "./PoliticianDetailAcademicHistory.vue";
 import PoliticianDetailPrivateHistory from "./PoliticianDetailPrivateHistory.vue"
 import PoliticianDetailOtherHistory from "./PoliticianDetailOtherHistory.vue";
+import BaseSpinner from '../../components/BaseSpinner.vue';
 
 const politician = ref<PoliticianModel>()
-const loading = ref(true)
+const loading = ref(false)
 const socialLinkType = SocialLinkType;
 const fetchData = async () => {
+    loading.value = true
     const route = useRoute()
     politician.value = await PoliticiansApi.findById(<string>route.params.id).then(
         (r: any) => r.data
@@ -43,7 +45,10 @@ onMounted(() => {
 
 <template>
     <div class="container mx-auto pt-8 px-4 pb-4">
-        <div v-if="!loading">
+        <template v-if="loading">
+            <BaseSpinner />
+        </template>
+        <div v-else="!loading">
             <div class="border p-6">
                 <img
                     :src="politician?.photo_url"

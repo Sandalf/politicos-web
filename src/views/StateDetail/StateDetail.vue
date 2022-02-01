@@ -4,21 +4,28 @@ import { useRoute } from 'vue-router'
 import PoliticiansApi from '../../services/politicians'
 import PoliticianType from '../../models/politician'
 import PoliticianPreview from '../../components/PoliticianPreview.vue'
+import BaseSpinner from '../../components/BaseSpinner.vue'
 
 const federalDeputies = ref<PoliticianType[]>([])
 const senators = ref<PoliticianType[]>([])
 const route = useRoute()
+const loadingDeputies = ref(false)
+const loadingSenators = ref(false)
 
 const fetchFederalDeputies = async () => {
+    loadingDeputies.value = true
     federalDeputies.value = await PoliticiansApi.getStateDeputies(
         route.params.state
     ).then((r: any) => r.data)
+    loadingDeputies.value = false
 }
 
 const fetchSenators = async () => {
+    loadingDeputies.value = true
     senators.value = await PoliticiansApi.getStateSenators(
         route.params.state
     ).then((r: any) => r.data)
+    loadingDeputies.value = false
 }
 
 onMounted(() => {
@@ -29,10 +36,7 @@ onMounted(() => {
 
 <template>
     <div class="container mx-auto py-8 px-4">
-        <h2
-            v-if="senators.length"
-            class="text-left text-gray-900 text-3xl font-bold px-4 mb-4"
-        >
+        <h2 class="text-left text-gray-900 text-3xl font-bold px-4 mb-4">
             Senadores
         </h2>
         <div class="flex flex-wrap">
@@ -48,10 +52,13 @@ onMounted(() => {
                 <PoliticianPreview :politician="senator" />
             </router-link>
         </div>
-        <h2
-            v-if="federalDeputies.length"
-            class="text-left text-gray-900 text-3xl font-bold px-4 mb-4"
-        >
+        <template v-if="!loadingSenators && !senators.length">
+            Faltan senadores por registrar
+        </template>
+        <template v-if="loadingSenators">
+            <BaseSpinner />
+        </template>
+        <h2 class="text-left text-gray-900 text-3xl font-bold px-4 mb-4">
             Diputados Federales
         </h2>
         <div class="flex flex-wrap">
@@ -67,5 +74,11 @@ onMounted(() => {
                 <PoliticianPreview :politician="federalDeputy" />
             </router-link>
         </div>
+        <template v-if="!loadingDeputies && !federalDeputies.length">
+            Faltan diputados por registrar
+        </template>
+        <template v-if="loadingDeputies">
+            <BaseSpinner />
+        </template>
     </div>
 </template>
