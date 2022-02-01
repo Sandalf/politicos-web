@@ -1,12 +1,13 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 import { useRouter } from 'vue-router'
 import debounce from '../utils/functions/debounce'
 import PoliticiansApi from '../services/politicians'
 import PoliticiansModel, { PoliticianCategory } from '../models/politician'
+import BaseSpinner from './BaseSpinner.vue'
 
 const politicians = ref<PoliticiansModel[]>([])
-const loading = ref(true)
+const loading = ref(false)
 const text = ref('')
 const selectedItem = ref<number>(-1)
 const router = useRouter()
@@ -17,6 +18,10 @@ const search = async (text: string) => {
     )
     loading.value = false
 }
+
+const resultsIsEmpty = computed(() => {
+    return !loading.value && !politicians.value.length && text.value.length > 0
+})
 
 const onInput = debounce(() => {
     if (text.value) {
@@ -71,6 +76,10 @@ const handleSelectPolitician = () => {
             @keydown="handleArrowKeys"
         />
         <ul class="absolute z-10 bg-white shadow-lg min-w-full">
+            <span v-show="resultsIsEmpty" class="block text-gray-500 my-4">
+                No hay resultados
+            </span>
+            <BaseSpinner v-show="!resultsIsEmpty && loading" class="my-4" />
             <router-link
                 v-for="(politician, index) in politicians"
                 :key="politician.id"
