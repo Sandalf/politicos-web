@@ -24,4 +24,11 @@ export default {
             },
         })
     },
+    search(text: string) {
+        return http.get('politicians/search', {
+            params: {
+                text,
+            },
+        })
+    },
 }

@@ -2,6 +2,7 @@
 import { onMounted, ref } from 'vue'
 import TheNavbar from '../components/TheNavbar.vue'
 import StatePreview from '../components/StatePreview.vue'
+import SearchPolitician from '../components/SearchPolitician.vue'
 import StatesApi from '../services/states'
 import StateType from '../models/state'
 
@@ -34,9 +35,7 @@ onMounted(() => {
                             diputados federales, como contactarlos y su
                             historial político.
                         </p>
-                        <p class="mt-4 text-lg text-gray-600">
-                            <!-- {{ states }} -->
-                        </p>
+                        <SearchPolitician />
                     </div>
                 </div>
             </div>
