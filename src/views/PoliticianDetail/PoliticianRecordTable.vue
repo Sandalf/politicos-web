@@ -10,7 +10,10 @@ const props = defineProps({
 })
 
 const getYear = (date: string) => {
-    return new Date(date).getFullYear()
+    if (date) {
+        return new Date(date).getFullYear()
+    }
+    return ''
 }
 </script>
 
