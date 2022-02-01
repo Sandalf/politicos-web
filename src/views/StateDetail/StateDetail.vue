@@ -29,7 +29,10 @@ onMounted(() => {
 
 <template>
     <div class="container mx-auto py-8 px-4">
-        <h2 class="text-left text-gray-900 text-3xl font-bold px-4 mb-4">
+        <h2
+            v-if="senators.length"
+            class="text-left text-gray-900 text-3xl font-bold px-4 mb-4"
+        >
             Senadores
         </h2>
         <div class="flex flex-wrap">
@@ -45,7 +48,10 @@ onMounted(() => {
                 <PoliticianPreview :politician="senator" />
             </router-link>
         </div>
-        <h2 class="text-left text-gray-900 text-3xl font-bold px-4 mb-4">
+        <h2
+            v-if="federalDeputies.length"
+            class="text-left text-gray-900 text-3xl font-bold px-4 mb-4"
+        >
             Diputados Federales
         </h2>
         <div class="flex flex-wrap">
