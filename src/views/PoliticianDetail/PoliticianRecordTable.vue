@@ -5,7 +5,7 @@ import PoliticianRecordModel from '../../models/politician-record'
 const props = defineProps({
     politicianRecords: {
         type: Array as PropType<PoliticianRecordModel[]>,
-        required: true,
+        required: false,
     },
 })
 
@@ -18,7 +18,7 @@ const getYear = (date: string) => {
 </script>
 
 <template>
-    <div v-if="politicianRecords.length" class="flex flex-col">
+    <div v-if="politicianRecords?.length" class="flex flex-col">
         <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
             <div
                 class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8"

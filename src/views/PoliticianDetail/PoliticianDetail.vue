@@ -48,7 +48,7 @@ onMounted(() => {
         <template v-if="loading">
             <BaseSpinner />
         </template>
-        <div v-else="!loading">
+        <div v-else-if="!loading && politician?.id">
             <div class="border p-6">
                 <img
                     :src="politician?.photo_url"
@@ -115,14 +115,14 @@ onMounted(() => {
                         </a>
                     </div>
                 </div>
+                <PoliticianDetailCommitteeHistory class="mt-6" :politician-id="politician?.id" />
+                <PoliticianDetailAdministrativeHistory class="mt-6" :politician-id="politician?.id" />
+                <PoliticianDetailLegislativeHistory class="mt-6" :politician-id="politician?.id"/>
+                <PoliticianDetailPoliticalHistory class="mt-6" :politician-id="politician?.id"/>
+                <PoliticianDetailAcademicHistory class="mt-6" :politician-id="politician?.id"/>
+                <PoliticianDetailPrivateHistory class="mt-6" :politician-id="politician?.id"/>
+                <PoliticianDetailOtherHistory class="mt-6" :politician-id="politician?.id"/>
             </div>
-            <PoliticianDetailCommitteeHistory class="mt-6" :politician-id="politician?.id" />
-            <PoliticianDetailAdministrativeHistory class="mt-6" :politician-id="politician?.id" />
-            <PoliticianDetailLegislativeHistory class="mt-6" :politician-id="politician?.id"/>
-            <PoliticianDetailPoliticalHistory class="mt-6" :politician-id="politician?.id"/>
-            <PoliticianDetailAcademicHistory class="mt-6" :politician-id="politician?.id"/>
-            <PoliticianDetailPrivateHistory class="mt-6" :politician-id="politician?.id"/>
-            <PoliticianDetailOtherHistory class="mt-6" :politician-id="politician?.id"/>
         </div>
     </div>
 </template>

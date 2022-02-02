@@ -15,7 +15,7 @@ const loadingSenators = ref(false)
 const fetchFederalDeputies = async () => {
     loadingDeputies.value = true
     federalDeputies.value = await PoliticiansApi.getStateDeputies(
-        route.params.state
+        <string>route.params.state
     ).then((r: any) => r.data)
     loadingDeputies.value = false
 }
@@ -23,7 +23,7 @@ const fetchFederalDeputies = async () => {
 const fetchSenators = async () => {
     loadingDeputies.value = true
     senators.value = await PoliticiansApi.getStateSenators(
-        route.params.state
+        <string>route.params.state
     ).then((r: any) => r.data)
     loadingDeputies.value = false
 }
