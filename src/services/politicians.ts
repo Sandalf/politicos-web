@@ -31,4 +31,12 @@ export default {
             },
         })
     },
+    image(url: string) {
+        const id = new URL(url).pathname.substr(-11, 7)
+        return http.get('politicians/image', {
+            params: {
+                image_id: id,
+            },
+        })
+    },
 }

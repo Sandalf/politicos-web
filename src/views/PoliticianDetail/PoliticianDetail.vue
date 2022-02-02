@@ -21,12 +21,14 @@ import BaseSpinner from '../../components/BaseSpinner.vue';
 const politician = ref<PoliticianModel>()
 const loading = ref(false)
 const socialLinkType = SocialLinkType;
+const image = ref<string>("")
 const fetchData = async () => {
     loading.value = true
     const route = useRoute()
     politician.value = await PoliticiansApi.findById(<string>route.params.id).then(
         (r: any) => r.data
     )
+    getImage(<string>politician?.value?.photo_url);
     loading.value = false
 }
 
@@ -36,6 +38,12 @@ const getPartyName = (party: Party) => {
 
 const partSocialLinkUrl = (url: string) => {
     return new URL(url).pathname
+}
+
+const getImage = async (url: string) => {
+    image.value = <string><unknown>(await PoliticiansApi.image(url).then(
+        (r: any) => 'data:image/jpeg;base64,'+(r.data)
+    ))
 }
 
 onMounted(() => {
@@ -51,7 +59,8 @@ onMounted(() => {
         <div v-else-if="!loading && politician?.id">
             <div class="border p-6">
                 <img
-                    :src="politician?.photo_url"
+                    v-if="image"
+                    :src="image"
                     :alt="politician?.name"
                     class="shadow-lg rounded-full object-cover h-24 w-24 md:h-40 md:w-40 border mb-3"
                 />

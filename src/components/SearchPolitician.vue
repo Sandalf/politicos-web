@@ -3,8 +3,9 @@ import { ref, computed } from 'vue'
 import { useRouter } from 'vue-router'
 import debounce from '../utils/functions/debounce'
 import PoliticiansApi from '../services/politicians'
-import PoliticiansModel, { PoliticianCategory } from '../models/politician'
+import PoliticiansModel from '../models/politician'
 import BaseSpinner from './BaseSpinner.vue'
+import SearchResult from './SearchResult.vue'
 
 const politicians = ref<PoliticiansModel[]>([])
 const loading = ref(false)
@@ -88,29 +89,10 @@ const handleSelectPolitician = () => {
                     params: { id: politician.id },
                 }"
             >
-                <li
-                    :class="{ 'bg-gray-100': selectedItem === index }"
-                    class="bg-purple-white border p-3 w-full flex items-center"
-                    role="button"
-                >
-                    <img
-                        :src="politician?.photo_url"
-                        :alt="politician?.name"
-                        class="rounded-full object-cover h-8 w-8 border mr-3"
-                    />
-                    {{ politician.name }},
-                    <span class="ml-2 text-gray-500 text-sm">
-                        {{
-                            politician?.category ===
-                            PoliticianCategory.FederalDeputy
-                                ? 'Diputado Federal'
-                                : 'Senador'
-                        }},
-                    </span>
-                    <span class="ml-2 text-gray-500 text-sm">
-                        {{ politician.state.code }}
-                    </span>
-                </li>
+                <SearchResult
+                    :active="selectedItem === index"
+                    :politician="politician"
+                />
             </router-link>
         </ul>
     </div>
