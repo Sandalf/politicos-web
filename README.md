@@ -1,11 +1,27 @@
-# Vue 3 + Typescript + Vite
+# Políticos Mexicanos - Front End
 
-This template should help get you started developing with Vue 3 and Typescript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+Este es el Front End para la página de [Políticos Mexicanos](https://mx-politicos.netlify.app/). Utiliza [Vite](https://vitejs.dev/) para el desarrollo y construcción de la aplicación. Está escrita en [Vue 3](https://v3.vuejs.org/) con TypeScript.
 
-## Recommended IDE Setup
+## Desarrollo
+Sigue los siguientes pasos si deseas inicializar el proyecto. Es recomendado haber preparado el [Back End](https://github.com/Sandalf/politicos-api) previamente.
+### Configuración de IDE recomendado
 
 - [VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar)
 
-## Type Support For `.vue` Imports in TS
+### Variables de ambiente
+Después de haber clonado el proyecto, crea un archivo llamado `.env.development` y configura las variables descritas en el archivo `.env.exmaple`.
+### Instala las dependencias
+Usando la terminal, muévete  a la carpeta del proyecto y correr:
+```
+yarn install
+```
 
-Since TypeScript cannot handle type information for `.vue` imports, they are shimmed to be a generic Vue component type by default. In most cases this is fine if you don't really care about component prop types outside of templates. However, if you wish to get actual prop types in `.vue` imports (for example to get props validation when using manual `h(...)` calls), you can enable Volar's `.vue` type support plugin by running `Volar: Switch TS Plugin on/off` from VSCode command palette.
+### Correr el servidor de desarrollo
+Una vez instaladas las dependencias puedes ejecutar el siguiente comando que abrirá el proyecto en `localhost:8000`:
+```
+yarn dev
+```
+
+## Idiomas
+* [Español](https://github.com/Sandalf/politicos-api/blob/main/README.md)
+* [English](https://github.com/Sandalf/politicos-api/blob/main/README.en.md)
