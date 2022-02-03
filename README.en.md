@@ -25,5 +25,5 @@ yarn dev
 ```
 
 ## Languages
-* [Español](https://github.com/Sandalf/politicos-api/blob/main/README.md)
-* [English](https://github.com/Sandalf/politicos-api/blob/main/README.en.md)
+* [Español](https://github.com/Sandalf/politicos-web/blob/main/README.md)
+* [English](https://github.com/Sandalf/politicos-web/blob/main/README.en.md)
